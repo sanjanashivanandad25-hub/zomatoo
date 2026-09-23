@@ -1,0 +1,81 @@
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Fresh • Fast • Flavorful</p>
+    <h1>Enjoy delicious meals made for every moment.</h1>
+    <p class="subtitle">
+      From cozy dinners to quick bites, discover handpicked dishes, warm hospitality,
+      and a dining experience that keeps you coming back.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/services" class="primary-btn">Explore Menu</a>
+      <a routerLink="/contact" class="secondary-btn">Book a Table</a>
+    </div>
+    <ul class="stats">
+      <li><strong>12k+</strong><span>happy diners</span></li>
+      <li><strong>4.8/5</strong><span>average rating</span></li>
+      <li><strong>25 min</strong><span>average delivery</span></li>
+    </ul>
+  </div>
+
+  <div class="hero-card">
+    <div class="card-header">
+      <span class="badge">Chef's Special</span>
+      <span class="rating">★ 4.9</span>
+    </div>
+    <div
+      class="dish-image"
+      style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.45)), url('https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=900&q=80');"
+    >
+      <div class="dish-glow"></div>
+      <div class="floating-tag">Hot & fresh</div>
+    </div>
+    <div class="dish-details">
+      <h3>Truffle Pasta</h3>
+      <p>Roasted garlic, parmesan, and creamy truffle sauce.</p>
+      <div class="price-row">
+        <span class="price">₹499</span>
+        <button>Order Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carousel-section">
+  <div class="section-heading">
+    <p class="eyebrow">Featured picks</p>
+    <h2>Popular food moments</h2>
+  </div>
+
+  <div class="carousel">
+    <button type="button" class="carousel-arrow left" (click)="prevSlide()" aria-label="Previous slide">‹</button>
+
+    <div class="carousel-track">
+      @for (slide of slides; track slide.title; let i = $index) {
+        <article
+          class="slide"
+          [class.active]="currentSlide === i"
+          [style.background-image]="'linear-gradient(135deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.55)), url(' + slide.image + ')'"
+        >
+          <div class="slide-content">
+            <p>{{ slide.subtitle }}</p>
+            <h3>{{ slide.title }}</h3>
+          </div>
+        </article>
+      }
+    </div>
+
+    <button type="button" class="carousel-arrow right" (click)="nextSlide()" aria-label="Next slide">›</button>
+  </div>
+
+  <div class="carousel-dots" aria-label="Carousel pagination">
+    @for (slide of slides; track slide.title; let i = $index) {
+      <button
+        type="button"
+        class="dot"
+        [class.active]="currentSlide === i"
+        (click)="selectSlide(i)"
+        [attr.aria-label]="'Show slide ' + (i + 1)"
+      ></button>
+    }
+  </div>
+</section>
